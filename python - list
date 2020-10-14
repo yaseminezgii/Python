@@ -1,0 +1,51 @@
+my_list = [1,2,3]
+len(my_list)
+3
+
+my_list = ['one','two','three',4,5]
+my_list[0]
+'one'
+
+my_list[1:]
+['two', 'three', 4, 5]
+
+my_list + ['new item']
+['one', 'two', 'three', 4, 5, 'new item']
+
+list1 = [1,2,3]
+list1.append('append me!')
+list1
+[1, 2, 3, 'append me!']
+
+list1.pop(0)
+1
+list1
+[2, 3, 'append me!']
+
+new_list = ['a','e','x','b','c']
+new_list.reverse()
+new_list
+['c', 'b', 'x', 'e', 'a']
+
+
+new_list.sort()
+new_list
+['a', 'b', 'c', 'e', 'x']
+
+
+lst_1=[1,2,3]
+lst_2=[4,5,6]
+lst_3=[7,8,9]
+matrix = [lst_1,lst_2,lst_3]
+matrix
+[[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+matrix[0][0]
+1
+
+first_col = [row[0] for row in matrix]
+first_col
+[1, 4, 7]
+
+
+
+
