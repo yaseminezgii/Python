@@ -86,3 +86,23 @@ with open(full_path, "r") as input:
                     output.append(line)
 df = pd.DataFrame(output)
 
+
+*** work with mutiple files fron folder
+
+import pandas as pd
+import numpy as np
+import csv
+from tabulate import tabulate
+import glob
+import os
+
+path = r'pathes\yetki'
+all_files = glob.glob(os.path.join(path, "*.txt")) #make list of paths
+
+for file in all_files:
+    # Getting the file name without extension
+    file_name = os.path.splitext(os.path.basename(file))[0]
+    # Reading the file content to create a DataFrame
+    dfn = pd.read_csv(file, delimiter = " ",header=None, usecols=[0,2,3,8])
+    dfn.index.name = file_name
+    dfn.columns=['Privilege', 'Username', 'GroupName', 'Filename']
