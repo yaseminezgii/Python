@@ -1,0 +1,29 @@
+import pandas as pd
+import numpy as np
+import csv
+from tabulate import tabulate
+
+s = 'Hello World'
+
+s[0]
+'H'
+
+s[1:]
+'ello World'
+
+s[:3]
+'Hel'
+
+s[:-1]
+'Hello Worl'
+
+s = s + ' Hello you!'
+Hello World Hello you!
+
+test = 'z'
+test*3
+'zzz'
+
+s.lower()  'hello world hello you!'
+s.upper()  'HELLO WORLD HELLO YOU!'
+s.split()  ['Hello', 'World', 'Hello', 'you!']
