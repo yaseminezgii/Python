@@ -1,0 +1,88 @@
+***copy dataframe
+df1 = df.copy()
+
+***combine and reorder dfs
+combined_df = pd.concat([dffirst, dfsecond, dfthird, dfforth, dffifth], ignore_index=False, axis=1)
+new_order= [severity4,severity3, severity2, severity1]
+combined_df = combined_df.reindex(new_order, axis=0)
+
+
+remove whitespaces
+deneme = '    Hello World     '
+x=deneme.strip()
+print(x)
+
+import xlsxwriter
+import csv
+write dataframe to excel
+df.to_excel(r'related path\Result.xlsx', index = False)
+
+
+*** read text file and create dataframe:
+
+file= r'related path\Result.xlsx'\file.txt'
+def parse_file():
+    df_file = pd.read_csv(file, delimiter = ":",header=None, usecols=[0])
+    df_file.columns = ['ColumnA']
+    return df_file
+df_file= parse_file()
+
+
+file2=r'related path\Result.xlsx'\file2.txt'
+def parse_file2():
+    df_file2 = pd.read_csv(file2, delimiter = " ",header=None, usecols=[0,2,3,8])
+    df_file2.columns=['Privilege', 'Username', 'GroupName', 'Filename']
+    df_file2['Privilege']=df_file2['Privilege'].str[1:]
+    df_file2['UserPriv'] = [x[:3] for x in df_file2['Privilege']]
+    df_file2['GroupPriv'] = [x[3:6] for x in df_file2['Privilege']]
+    df_file2['OtherPriv'] = [x[6:9] for x in df_file2['Privilege']]
+    df_file2 = df_file2[["Filename", "Username", "GroupName", "UserPriv", 'GroupPriv', 'OtherPriv']]
+    return df_file2
+df_file2= parse_file2()
+
+
+*** merge dataframes:
+def merge():
+    df_merge = df_file2.merge(df_group, on='GroupName', how='left')
+    df_merge['OtherUsers'] = df_merge['GroupUsers'].apply(lambda x: ','.join(y for y in df_passwd['passwd_users'] if y not in x.split(',')))
+    df_merge = df_merge[["Filename", "Username", "UserPriv", "GroupName", 'GroupUsers', 'GroupPriv', 'OtherUsers','OtherPriv']]
+    return df_merge
+
+df_merge= merge()
+
+*** output to table format
+print(tabulate(df_merge, headers='keys', tablefmt='psql'))
+
+***ask for input:
+file_path=input("File Path: ")
+
+
+def config_parameters():
+    output = []
+    with open(file_path, "r") as input:
+        for line in input:
+            if not line.startswith('#'):
+                if any(word in line for word in keywords):
+                    output.append(line)
+                    df = pd.DataFrame(output)
+                    df.columns = ['Parameters']
+                    df1 = df.Parameters.str.split(expand=True)
+                    df1.columns = ['Parameters', 'Result']
+                    df1.Result.replace(['Yes', 'No'], ['yes', 'no'], inplace=True)
+    return df1
+    
+    
+    
+dir= r'path\sudoersparse'
+file = 'sudoers.txt'
+full_path=os.path.join(dir,file)
+output = []
+with open(full_path, "r") as input:
+        for line in input:
+            line= line.strip()
+            line=line.lstrip('0123456789.- ')
+            if not line.startswith('#'):
+                if any(word in line for word in keywords):
+                    output.append(line)
+df = pd.DataFrame(output)
+
