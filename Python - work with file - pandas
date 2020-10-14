@@ -7,7 +7,7 @@ new_order= [severity4,severity3, severity2, severity1]
 combined_df = combined_df.reindex(new_order, axis=0)
 
 
-remove whitespaces
+***remove whitespaces
 deneme = '    Hello World     '
 x=deneme.strip()
 print(x)
